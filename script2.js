@@ -1,7 +1,46 @@
-const api = fetch("http://localhost:3000/videos")
-    .then(resp => resp.json())
+async function carregarDadosDoServidorComTimeout(url, timeout) {
+    try {
+        const response = await Promise.race([
+            fetch(url, {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: "7975deb3-cac9-6ee3-f10b-75eb65c5c1c6",
+                },
+            }),
+            new Promise((_, reject) => {
+                setTimeout(() => {
+                    console.log(`servidor não respondeu no tempo de timeout = ${timeout} então será considerado que a requisição de carregamento de video falhou`)
+                    reject(new Error("Tempo limite excedido"));
+                }, timeout);
+            }),
+        ]);
+        const data = await response.json();
+        return data;
+    } catch (error) {
 
+        throw new Error("Erro:", error);
 
-    ;
+    }
+}
 
+const containerVideos = document.querySelector(".videos__container");
 
+// Uso da função com timeout de 3 segundos
+carregarDadosDoServidorComTimeout("http://localhost:3000/videos", 3000)
+    .then((videos) => {
+        videos.forEach((video) => {
+            containerVideos.innerHTML += `
+          <li class="videos__item">
+            <iframe src="${video.url}" title="${video.titulo}" frameborder="0" allowfullscreen></iframe>
+            <div class="descricao-video">
+              <img class="img-canal" src="${video.imagem}" alt="Logo do Canal">
+              <h3 class="titulo-video">${video.titulo}</h3>
+              <p class="titulo-canal">${video.descricao}</p>
+            </div>
+          </li>`;
+        });
+    })
+    .catch((error) => {
+        alert('Falha ao acessar end point!');
+        console.error("Erro:", error);
+    });
