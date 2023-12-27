@@ -9,7 +9,7 @@ async function carregarDadosDoServidorComTimeout(url, timeout) {
             }),
             new Promise((_, reject) => {
                 setTimeout(() => {
-                    console.log(`servidor não respondeu no tempo de timeout = ${timeout} então será considerado que a requisição de carregamento de video falhou`)
+                    containerVideos.innerHTML += `<p>servidor não respondeu no tempo de timeout = ${timeout} então será considerado que a requisição de carregamento de video falhou, </p>`
                     reject(new Error("Tempo limite excedido"));
                 }, timeout);
             }),
@@ -41,6 +41,6 @@ carregarDadosDoServidorComTimeout("http://localhost:3000/videos", 3000)
         });
     })
     .catch((error) => {
-        alert('Falha ao acessar end point!');
-        console.error("Erro:", error);
+        containerVideos.innerHTML += `<p>Houve erro ao carregar videos: ${error} </p>`
+     
     });

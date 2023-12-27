@@ -11,14 +11,14 @@ const api = fetch("http://localhost:3000/videos", {
     },
 })
     .then(res => res.json())
-    .then((videos) =>
+     .then((videos) =>
         videos.forEach((video) => {
             containerVideos.innerHTML += `
             <li class="videos__item">
-                <iframe src="${video.url}" title"${video.titulo}" frameborder="0" allowfullscreen></iframe>
+                <iframe src="${video.link}" title"${video.cidade}" frameborder="0" allowfullscreen></iframe>
                     <div class="descricao-video">
-                         <img class="img-canal" src = "${video.imagem}" alt="Logo do Canal">
-                         <h3 class="titulo-video">${video.titulo}</h3>
+        
+                         <h3 class="titulo-video">${video.modalidade}</h3>
                              <p class="titulo-canal">${video.descricao}</p>
                      </div>
                   
@@ -28,11 +28,10 @@ const api = fetch("http://localhost:3000/videos", {
         })
     )
     .catch((error) => {
-        containerVideos.innerHTML += `<p>Houve erro ao carregar videos: ${error} </p>`
-        alert('catch')
+        alert('Falha ao acessar end point!')
+
     }
-    
-    )
+    ) 
 
 
     ;
