@@ -19,8 +19,10 @@ async function carregarDadosDosServidoresComTimeout(urls, timeout) {
         for (const request of requests) {
             try {
                 const response = await Promise.race([request, timeoutPromise(timeout)]);
-                primeiraResposta = await response.json();
-                break;
+                if (response.status==200){
+                    primeiraResposta = await response.json();
+                    break;
+                }
             } catch (error) {
                 // Ignora o erro e continua com as próximas requisições
             }
@@ -43,6 +45,7 @@ async function carregarDadosDosServidoresComTimeout(urls, timeout) {
 const servidores = [
     "http://localhost:3000/videos",
     "http://localhost:3001/videos",
+    "https://my-json-server.typicode.com/ssSistemas/frontend-css_javascriptAPI/master/db.json",
     "https://my-json-server.typicode.com/ssSistemas/frontend-css_javascriptAPI/videos"    
 ];
 
