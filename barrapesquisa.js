@@ -10,10 +10,14 @@ function FiltrarPesquisa(local){
             if (!localPesquisa.includes(valorFiltro)){
                 video.style.display = "none";
             }else{
-                video.style.display = "block"
+                video.style.display = "block";
             
             }
 
+        }
+    }else{
+        for(let video of videos){
+            video.style.display="block";
         }
     }
 }   
@@ -29,8 +33,14 @@ const categorias = document.querySelectorAll(".superior__item")
 
 categorias.forEach((categoria)=>{
     categoria.addEventListener("click",()=>{
+        if (categoria.textContent=="Tudo"){
+            barraPesquisa.value=null;
+            
+        }else{
         barraPesquisa.value=categoria.textContent;
-        FiltrarPesquisa(".categoria");
+        
+        }
+        FiltrarPesquisa(".categoria")
     })
 }
 )
