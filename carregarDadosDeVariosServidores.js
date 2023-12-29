@@ -43,6 +43,7 @@ async function carregarDadosDosServidoresComTimeout(urls, timeout) {
 const servidores = [
     "http://localhost:3000/videos",
     "http://localhost:3001/videos",
+    "https://my-json-server.typicode.com/ssSistemas/frontend-css_javascriptAPI/videos"    
 ];
 
 const containerVideos = document.querySelector(".videos__container");
