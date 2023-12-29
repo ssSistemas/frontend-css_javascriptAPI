@@ -21,6 +21,7 @@ async function carregarDadosDosServidoresComTimeout(urls, timeout) {
                 const response = await Promise.race([request, timeoutPromise(timeout)]);
                 if (response.status==200){
                     primeiraResposta = await response.json();
+                    console.log(`Dados carregados com sucesso da API: ${response.url}`)
                     break;
                 }
             } catch (error) {
