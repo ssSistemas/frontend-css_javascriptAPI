@@ -58,7 +58,7 @@ carregarDadosDosServidoresComTimeout(servidores, 40000)
                         <img class="img-canal" src="${video.imagem}" alt="Logo do Canal">
                         <h3 class="titulo-video">${video.titulo}</h3>
                         <p class="titulo-canal">${video.descricao}</p>
-                        <p class="categoria">${video.categoria}</p>
+                        <p class="categoria" hidden>${video.categoria}</p>
                     </div>
                 </li>`;
         });
