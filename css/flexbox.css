@@ -8,9 +8,6 @@
   top: 0;
 }
 
-.cabecalho__pesquisar__item {
-  display: none;
-}
 
 .form__pesquisa {
   position: relative;
@@ -116,12 +113,19 @@
 }
 
 @media (min-width: 1156px) {
-  /* CABEÇALHO */
+   CABEÇALHO 
 
   .cabecalho__pesquisar__item {
     display: block;
     transform: translate(-60px);
   }
+
+  .pesquisar__input{
+    display: none;
+  }
+
+}
+
 
   .pesquisar__input {
     width: 530px;

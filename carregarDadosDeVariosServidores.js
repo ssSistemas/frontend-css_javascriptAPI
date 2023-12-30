@@ -15,6 +15,17 @@ async function carregarDadosDosServidoresComTimeout(urls, timeout) {
         const timeoutPromise = (ms) =>
             new Promise((_, reject) => setTimeout(() => reject(new Error("Tempo limite excedido")), ms));
 
+
+            // function timeoutPromise(ms) {
+            //     return new Promise(function(_, reject) {
+            //         setTimeout(function() {
+            //             reject(new Error("Tempo limite excedido"));
+            //         }, ms);
+            //     });
+            // }
+
+            
+
         // Espera pela primeira resposta bem-sucedida
         for (const request of requests) {
             try {
@@ -46,13 +57,13 @@ async function carregarDadosDosServidoresComTimeout(urls, timeout) {
 const servidores = [
     "http://localhost:3000/videos",
     "http://localhost:3001/videos",
-    "https://my-json-server.typicode.com/ssSistemas/frontend-css_javascriptAPI/master/db.json",
-    "https://my-json-server.typicode.com/ssSistemas/frontend-css_javascriptAPI/videos"    
+    "https://my-json-server.typicode.com/ssSistemas/frontend-css_javascriptAPI/master/db.json"//,
+    //"https://my-json-server.typicode.com/ssSistemas/frontend-css_javascriptAPI/videos"    
 ];
 
 const containerVideos = document.querySelector(".videos__container");
 
-carregarDadosDosServidoresComTimeout(servidores, 40000)
+carregarDadosDosServidoresComTimeout(servidores, 4000)
     .then(data => {
         // Processar os dados e criar a estrutura HTML
         data.forEach((video) => {
