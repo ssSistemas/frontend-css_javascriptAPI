@@ -48,7 +48,7 @@ body {
 }
 
 .pesquisar__input-teclado {
-    position: absolute;
+    position: relative;
     right: 16%;
     top: 30%;
 }

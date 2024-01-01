@@ -10,15 +10,19 @@
 
 .cabecalho__pesquisar__item {
   flex-grow: 4;
-  flex-shrink: 1;
+  flex-shrink: 3;
 }
 
 .form__pesquisa {
+  display: flex;
   width: 100%;
+  box-sizing: border-box;
+
 }
 
 .pesquisar__input {
   width: 100%;
+  box-sizing: border-box;
 }
 
 
@@ -60,4 +64,42 @@
 
 .descricao-video .img-canal {
   grid-area: 1 / 1 / 3 / 2;
+}
+
+.posicao__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.Menu__Lateral {
+  height: 100vh;
+  width: 40vh;
+  box-sizing: border-box;
+
+}
+
+.corpo1 {
+  display: flex;
+  margin-top: 12vh;
+
+}
+
+.Menu_lateral_lista {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: scroll;
+  width: 100%;
+  padding: 0 0 0 2rem;
+
+
+}
+
+li {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+
 }
